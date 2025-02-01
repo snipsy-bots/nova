@@ -5,6 +5,11 @@
     "detritus-client": "0.17.0-beta.73",
     "luxon": "^3.5.0"
   },
+  "scripts": {
+    "rm": "rm -rf dist",
+    "build": "tsc",
+    "dev": "yarn rm && yarn build && node dist/index.js"
+  },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
     "@types/luxon": "^3",

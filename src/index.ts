@@ -1,5 +1,5 @@
-import { ShardClient } from 'detritus-client';
+import { NovaClient } from './packages/core/Client';
 
-const client = new ShardClient('');
+const client = new NovaClient();
 
-client;
+client.run({ wait: true }).catch(console.error);
