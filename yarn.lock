@@ -636,9 +636,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"detritus-client@npm:0.17.0-beta.64":
-  version: 0.17.0-beta.64
-  resolution: "detritus-client@npm:0.17.0-beta.64"
+"detritus-client@npm:0.17.0-beta.73":
+  version: 0.17.0-beta.73
+  resolution: "detritus-client@npm:0.17.0-beta.73"
   dependencies:
     detritus-client-rest: "npm:^0.11.0-beta.19"
     detritus-client-socket: "npm:^0.9.0-beta.5"
@@ -654,7 +654,7 @@ __metadata:
       optional: true
     opusscript:
       optional: true
-  checksum: 10c0/1560cc97ab41485ef9b5bcf5b56412a4b7859d3078e7c2ed80e2f2a3d124323a17b9eddfb204f3183599a78b98cb5bfe6754d4c836b38acf66a2050e457333f8
+  checksum: 10c0/556e36451fbfae76d57c300bc9cdfc95adb3433ed848db2ba1f3cc6a45ebad30a38fc7716f84ed3c5e3a14daeb4a5bfe63baebe760fb096055123579048a3e5f
   languageName: node
   linkType: hard
 
@@ -1456,7 +1456,7 @@ __metadata:
     "@eslint/js": "npm:^9.17.0"
     "@types/luxon": "npm:^3"
     "@types/node": "npm:^22.9.3"
-    detritus-client: "npm:0.17.0-beta.64"
+    detritus-client: "npm:0.17.0-beta.73"
     eslint: "npm:^9.17.0"
     luxon: "npm:^3.5.0"
     prettier: "npm:^3.4.2"
