@@ -19,4 +19,18 @@ declare module '@nova-bot/typings' {
          */
         SUPPORT_SERVER?: string;
     }
+
+    export interface EventHandlerOptions {
+        /**
+         * the directory to load events from.
+         */
+        directory: string;
+    }
+
+    export interface EventListenerOptions {
+        id: string;
+        type: 'on' | 'once';
+        event: string;
+        emitter: string;
+    }
 }
