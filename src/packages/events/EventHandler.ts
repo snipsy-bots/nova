@@ -4,8 +4,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { NovaClient } from '../core/Client';
 import { EventListener } from './Event';
+import { Collections } from 'detritus-client';
 export class EventHandler extends EventEmitter {
     options: EventHandlerOptions;
+
+    modules: Collections.BaseCollection<string, EventListener>;
 
     emitters: Record<string, EventEmitter>;
     private $client: NovaClient;
@@ -18,6 +21,8 @@ export class EventHandler extends EventEmitter {
         this.emitters = {
             client: client,
         };
+
+        this.modules = new Collections.BaseCollection();
     }
 
     setEmitters(emitters: Record<string, EventEmitter>) {
@@ -50,6 +55,11 @@ export class EventHandler extends EventEmitter {
                 if (!(listener.emitter in this.emitters)) {
                     throw new Error(`Emitter ${listener.emitter} not found.`);
                 }
+
+                if (this.modules.has(listener.id)) {
+                    continue;
+                }
+
             } catch (error) {
                 console.error(`could not load file ${file}`, error);
             }
