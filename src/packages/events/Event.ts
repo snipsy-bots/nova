@@ -1,10 +1,12 @@
 import { EventListenerOptions } from '@nova-bot/typings';
+import { NovaClient } from '../core/Client';
 
-export class EventListener implements EventListenerOptions {
+export abstract class EventListener implements EventListenerOptions {
     id: string;
     type: 'on' | 'once';
     event: string;
     emitter: string;
+    client!: NovaClient;
 
     constructor(options: EventListenerOptions) {
         this.id = options.id;
@@ -12,4 +14,6 @@ export class EventListener implements EventListenerOptions {
         this.event = options.event;
         this.emitter = options.emitter;
     }
+
+    abstract exec(...args: unknown[]): unknown;
 }

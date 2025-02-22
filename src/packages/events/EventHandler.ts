@@ -5,6 +5,7 @@ import * as path from 'path';
 import { NovaClient } from '../core/Client';
 import { EventListener } from './Event';
 import { Collections } from 'detritus-client';
+
 export class EventHandler extends EventEmitter {
     options: EventHandlerOptions;
 
@@ -60,6 +61,14 @@ export class EventHandler extends EventEmitter {
                     continue;
                 }
 
+                listener.client = this.client;
+                this.modules.set(listener.id, listener);
+                this.emitters[listener.emitter][listener.type](
+                    listener.event,
+                    (...args) => {
+                        return this.modules.get(listener.id)?.exec(...args);
+                    },
+                );
             } catch (error) {
                 console.error(`could not load file ${file}`, error);
             }
