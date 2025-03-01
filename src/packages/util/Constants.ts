@@ -1,6 +1,10 @@
 import { ShardClientOptions } from 'detritus-client';
 import { getEnv } from './util';
-import { GatewayIntents } from 'detritus-client/lib/constants';
+import {
+    ActivityTypes,
+    GatewayIntents,
+    PresenceStatuses,
+} from 'detritus-client/lib/constants';
 
 export const env = getEnv();
 
@@ -18,6 +22,15 @@ export const clientOptions: ShardClientOptions = {
     gateway: {
         identifyProperties: {
             $browser: 'Discord Android',
+        },
+        presence: {
+            activities: [
+                {
+                    name: 'booting up...',
+                    type: ActivityTypes.CUSTOM_STATUS,
+                },
+            ],
+            status: PresenceStatuses.DND,
         },
 
         loadAllMembers: true,

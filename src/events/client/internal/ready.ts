@@ -1,4 +1,8 @@
-import { ClientEvents, PresenceStatuses } from 'detritus-client/lib/constants';
+import {
+    ActivityTypes,
+    ClientEvents,
+    PresenceStatuses,
+} from 'detritus-client/lib/constants';
 import { EventListener } from '../../../packages/events/Event';
 
 export default class ReadyEvent extends EventListener {
@@ -18,8 +22,8 @@ export default class ReadyEvent extends EventListener {
             afk: true,
             activities: [
                 {
-                    name: 'with your heart',
-                    type: 0,
+                    name: 'to the universes headbeat and your commands.',
+                    type: ActivityTypes.LISTENING,
                 },
             ],
         });
