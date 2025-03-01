@@ -65,8 +65,12 @@ export class EventHandler extends EventEmitter {
                 this.modules.set(listener.id, listener);
                 this.emitters[listener.emitter][listener.type](
                     listener.event,
-                    (...args) => {
-                        return this.modules.get(listener.id)?.exec(...args);
+                    async (...args) => {
+                        try {
+                            await this.modules.get(listener.id)?.exec(...args);
+                        } catch (e) {
+                            console.error(e);
+                        }
                     },
                 );
             } catch (error) {

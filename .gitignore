@@ -142,3 +142,4 @@ dist
 # modification
 *.env
 venv
+custom_testing/

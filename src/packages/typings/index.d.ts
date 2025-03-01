@@ -34,3 +34,15 @@ declare module '@nova-bot/typings' {
         emitter: string;
     }
 }
+
+declare module '@nova-bot/dnd-typings' {
+    export interface _DiceResult {
+        total: number;
+        rolls: { roll: number; dice: number }[];
+    }
+
+    export interface ReturnDiceResult {
+        combined: number;
+        results: _DiceResult[];
+    }
+}

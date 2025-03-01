@@ -1,14 +1,14 @@
 import { ShardClient } from 'detritus-client';
 import { SlashCommandClient } from '../commands/slash/SlashCommandClient';
 import * as socket from 'detritus-client-socket';
-import { env } from '../util/Constants';
+import { clientOptions, env } from '../util/Constants';
 export class NovaClient extends ShardClient {
     commands = {
         slash: new SlashCommandClient(this),
     };
 
     constructor() {
-        super(env.DISCORD_TOKEN);
+        super(env.DISCORD_TOKEN, clientOptions);
     }
 
     async setPresence(presence: socket.Gateway.PresenceOptions): Promise<this> {
