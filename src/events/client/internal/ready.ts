@@ -11,7 +11,7 @@ export default class ReadyEvent extends EventListener {
             emitter: 'client',
             event: ClientEvents.GATEWAY_READY,
             id: 'client.emitters.internal.ready',
-            type: 'on',
+            type: 'once',
         });
     }
 
