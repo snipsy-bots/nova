@@ -8,6 +8,7 @@ const events = new EventHandler(client, {
 });
 
 async function start() {
+    client.lang.loadLanguages();
     await events.loadAll();
     await client.run({ wait: true });
 }

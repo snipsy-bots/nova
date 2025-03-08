@@ -35,6 +35,18 @@ declare module '@nova-bot/typings' {
     }
 }
 
+declare module '@nova-bot/i18n' {
+    export interface LanguageKeys {
+        CLIENT_READY: (username: string) => string;
+        CLIENT_READY_ACTIVITY: (data: LanguageKeyActivityParam) => string;
+    }
+
+    interface LanguageKeyActivityParam {
+        guilds: number;
+        users: number;
+    }
+}
+
 declare module '@nova-bot/dnd-typings' {
     export interface _DiceResult {
         total: number;

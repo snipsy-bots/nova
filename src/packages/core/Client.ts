@@ -2,10 +2,13 @@ import { ShardClient } from 'detritus-client';
 import { SlashCommandClient } from '../commands/slash/SlashCommandClient';
 import * as socket from 'detritus-client-socket';
 import { clientOptions, env } from '../util/Constants';
+import { I18n } from '../i18n/i198n';
 export class NovaClient extends ShardClient {
     commands = {
         slash: new SlashCommandClient(this),
     };
+
+    lang = new I18n();
 
     constructor() {
         super(env.DISCORD_TOKEN, clientOptions);

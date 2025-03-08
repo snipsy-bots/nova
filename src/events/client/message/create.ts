@@ -18,8 +18,5 @@ export default class MessageCreateEvent extends EventListener {
         const msg = data.message as Message;
 
         if (msg.author.bot) return;
-        console.log(
-            `${msg.author.username}#${msg.author.discriminator !== '0' ? msg.author.discriminator : ''} : ${msg.content}`,
-        );
     }
 }
