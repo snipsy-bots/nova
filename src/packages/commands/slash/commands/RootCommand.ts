@@ -1,3 +1,3 @@
-import { SlashCommand } from './SlashCommand';
+import { CustomInteractionCommand } from './CustomCommand';
 
-export class RootCommand extends SlashCommand {}
+export class RootCommand extends CustomInteractionCommand {}

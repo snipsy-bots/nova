@@ -2,15 +2,16 @@ import { Collections } from 'detritus-client';
 import { Language } from './Language';
 import * as fs from 'fs';
 import * as path from 'path';
+import DefaultLanguage from '../../languages/default';
 export class I18n {
     public languages = new Collections.BaseCollection<string, Language>();
-
+    public default = new DefaultLanguage();
     public add(language: Language) {
         this.languages.set(language.id, language);
     }
 
     public get(id: string) {
-        return this.languages.get(id);
+        return this.languages.get(id) || this.default;
     }
 
     public loadLanguages() {

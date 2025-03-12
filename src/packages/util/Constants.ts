@@ -16,6 +16,8 @@ export const ignoredRawEvents = [
     'MESSAGE_UPDATE',
     'MESSAGE_CREATE',
     'TYPING_START',
+    'PRESENCE_UPDATE',
+    'INTERACTION_CREATE',
 ] as const;
 
 export const clientOptions: ShardClientOptions = {

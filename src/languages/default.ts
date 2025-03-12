@@ -2,13 +2,13 @@ import { LanguageKeyActivityParam } from '@nova-bot/i18n';
 import { Language } from '../packages/i18n/Language';
 
 const activities = [
-    'to you',
-    'to {{guilds}} guilds',
-    'to {{users}} users',
-    'to {{users}} users on {{guilds}} guilds',
+    'you',
+    '{{guilds}} guilds',
+    '{{users}} users',
+    '{{users}} users on {{guilds}} guilds',
 ];
 
-export default class Default extends Language {
+export default class DefaultLanguage extends Language {
     constructor() {
         super('DEFAULT');
     }
@@ -23,4 +23,6 @@ export default class Default extends Language {
                 ).toString();
             },
         );
+
+    COMMAND_PING_RESPONSE = (ping: number) => `Pong! ${ping}ms`;
 }

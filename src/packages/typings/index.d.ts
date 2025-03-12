@@ -39,6 +39,7 @@ declare module '@nova-bot/i18n' {
     export interface LanguageKeys {
         CLIENT_READY: (username: string) => string;
         CLIENT_READY_ACTIVITY: (data: LanguageKeyActivityParam) => string;
+        COMMAND_PING_RESPONSE: (ping: number) => string;
     }
 
     interface LanguageKeyActivityParam {
