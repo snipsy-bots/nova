@@ -16,8 +16,9 @@ export default class ReadyEvent extends EventListener {
     }
 
     async exec() {
-        const defaultLanguage = this.client.lang.get('DEFAULT');
-        const { CLIENT_READY, CLIENT_READY_ACTIVITY } = defaultLanguage!;
+        const defaultLanguage = this.client.lang.get('DEFAULT').client;
+        const { ready: CLIENT_READY, activity: CLIENT_READY_ACTIVITY } =
+            defaultLanguage;
         console.log(CLIENT_READY(this.client.user!.username));
         await this.client.setPresence({
             status: PresenceStatuses.ONLINE,

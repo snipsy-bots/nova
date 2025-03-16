@@ -37,9 +37,16 @@ declare module '@nova-bot/typings' {
 
 declare module '@nova-bot/i18n' {
     export interface LanguageKeys {
-        CLIENT_READY: (username: string) => string;
-        CLIENT_READY_ACTIVITY: (data: LanguageKeyActivityParam) => string;
-        COMMAND_PING_RESPONSE: (ping: number) => string;
+        client: {
+            ready: (username: string) => string;
+            activity: (data: LanguageKeyActivityParam) => string;
+        };
+        commands: {
+            ping: {
+                initialPingMessage: string[];
+                response: (ping: number) => string;
+            };
+        };
     }
 
     interface LanguageKeyActivityParam {

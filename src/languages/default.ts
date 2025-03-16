@@ -12,17 +12,24 @@ export default class DefaultLanguage extends Language {
     constructor() {
         super('DEFAULT');
     }
+    client = {
+        ready: (name: string) => `${name} is now ready. `,
+        activity: (data: LanguageKeyActivityParam) =>
+            activities[Math.floor(Math.random() * activities.length)].replace(
+                /{{(.*?)}}/g,
+                (_, key) => {
+                    return (
+                        data[key as 'users'] || '<not-provided-info>'
+                    ).toString();
+                },
+            ),
+    };
 
-    CLIENT_READY = (name: string) => `${name} is now ready. `;
-    CLIENT_READY_ACTIVITY = (data: LanguageKeyActivityParam) =>
-        activities[Math.floor(Math.random() * activities.length)].replace(
-            /{{(.*?)}}/g,
-            (_, key) => {
-                return (
-                    data[key as 'users'] || '<not-provided-info>'
-                ).toString();
-            },
-        );
-
-    COMMAND_PING_RESPONSE = (ping: number) => `Pong! ${ping}ms`;
+    commands = {
+        ping: {
+            initialPingMessage: ['asking the cosmos for a response...'],
+            response: (ping: number) =>
+                ` The Cosmos returned my call in \`${ping}\`ms`,
+        },
+    };
 }

@@ -14,7 +14,6 @@ export default class MessageCreateEvent extends EventListener {
     }
 
     async exec(data: GatewayClientEvents.MessageCreate) {
-        //@ts-expect-error
         const msg = data.message as Message;
 
         if (msg.author.bot) return;

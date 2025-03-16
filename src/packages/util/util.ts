@@ -22,3 +22,6 @@ export function getEnv() {
     }
     return env;
 }
+
+export const wait = (ms: number) =>
+    new Promise((resolve) => setTimeout(resolve, ms));
