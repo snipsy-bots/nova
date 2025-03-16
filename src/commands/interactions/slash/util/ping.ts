@@ -21,6 +21,6 @@ export default class PingCommand extends SlashCommand {
         const end = Date.now();
         await wait(500);
         const responseOfTheCosmos = lang.commands.ping.response(end - start);
-        await ctx.say(`${responseOfTheCosmos} `, { flags: 64 });
+        await ctx.say(responseOfTheCosmos, { flags: 64 });
     }
 }

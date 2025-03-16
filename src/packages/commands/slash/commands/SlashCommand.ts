@@ -3,13 +3,15 @@ import { CustomInteractionCommand } from './CustomCommand';
 import { CustomSlashContext } from './CustomContext';
 
 export abstract class SlashCommand extends CustomInteractionCommand {
-    abstract exec(ctx: CustomSlashContext): any;
+    abstract exec(ctx: CustomSlashContext): unknown;
 
     async run(ctx: Interaction.InteractionContext) {
         try {
             const context = CustomSlashContext.fromContext(ctx);
             await this.exec(context);
-        } catch (error) {}
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     static applyOptions(options: Interaction.InteractionCommandOptions) {
@@ -17,9 +19,8 @@ export abstract class SlashCommand extends CustomInteractionCommand {
             cls: new (
                 opts: Interaction.InteractionCommandOptions,
             ) => SlashCommand,
-        ): any => {
-            //@ts-expect-error
-            class NewClass extends cls {
+        ): unknown => {
+            abstract class NewClass extends cls {
                 constructor(opts: Interaction.InteractionCommandOptions) {
                     super({
                         ...opts,

@@ -20,6 +20,7 @@ export class I18n {
         const files = fs.readdirSync(p);
         for (const file of files) {
             if (file.endsWith('.js')) {
+                // eslint-disable-next-line @typescript-eslint/no-require-imports
                 const language = require(path.join(p, file)).default;
                 this.add(new language());
             }
