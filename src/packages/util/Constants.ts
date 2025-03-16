@@ -3,6 +3,7 @@ import { getEnv } from './util';
 import {
     ActivityTypes,
     GatewayIntents,
+    Locales,
     PresenceStatuses,
 } from 'detritus-client/lib/constants';
 
@@ -22,15 +23,10 @@ export const ignoredRawEvents = [
 
 export const clientOptions: ShardClientOptions = {
     gateway: {
-        identifyProperties: {
-            $browser: 'Discord Android',
-        },
+        identifyProperties: { $browser: 'Discord Android' },
         presence: {
             activities: [
-                {
-                    name: 'booting up...',
-                    type: ActivityTypes.CUSTOM_STATUS,
-                },
+                { name: 'booting up...', type: ActivityTypes.CUSTOM_STATUS },
             ],
             status: PresenceStatuses.DND,
         },
@@ -61,3 +57,37 @@ export const clientOptions: ShardClientOptions = {
         ],
     },
 };
+
+export const defaultLanguage = Locales.ENGLISH_US;
+
+export const locales = {
+    BULGARIAN: 'bg',
+    CHINESE: 'zh-CN',
+    CHINESE_TAIWAN: 'zh-TW',
+    CROATIAN: 'hr',
+    CZECH: 'cs',
+    DANISH: 'da',
+    DUTCH: 'nl',
+    ENGLISH_GB: 'en-GB',
+    ENGLISH_US: 'en-US',
+    FINNISH: 'fi',
+    FRENCH: 'fr',
+    GERMAN: 'de',
+    GREEK: 'el',
+    HUNGARIAN: 'hu',
+    ITALIAN: 'it',
+    JAPANESE: 'ja',
+    KOREAN: 'ko',
+    LITHUANIAN: 'lt',
+    NORWEGIAN: 'no',
+    POLISH: 'pl',
+    PORTUGUESE_BRAZILIAN: 'pt-BR',
+    ROMANIAN: 'ro',
+    RUSSIAN: 'ru',
+    SPANISH: 'es-ES',
+    SWEDISH: 'sv-SE',
+    THAI: 'th',
+    TURKISH: 'tr',
+    UKRAINIAN: 'uk',
+    VIETNAMESE: 'vi',
+} as const;

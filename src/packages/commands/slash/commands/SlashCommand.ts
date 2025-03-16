@@ -19,13 +19,11 @@ export abstract class SlashCommand extends CustomInteractionCommand {
             cls: new (
                 opts: Interaction.InteractionCommandOptions,
             ) => SlashCommand,
-        ): unknown => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ): any => {
             abstract class NewClass extends cls {
                 constructor(opts: Interaction.InteractionCommandOptions) {
-                    super({
-                        ...opts,
-                        ...options,
-                    });
+                    super({ ...opts, ...options });
                 }
             }
 
