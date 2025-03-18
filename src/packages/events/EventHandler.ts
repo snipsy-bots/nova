@@ -1,4 +1,4 @@
-import { EventHandlerOptions } from '@nova-bot/typings';
+import { EventHandlerOptions } from '../typings';
 import { EventEmitter } from 'events';
 import * as fs from 'fs';
 import * as path from 'path';

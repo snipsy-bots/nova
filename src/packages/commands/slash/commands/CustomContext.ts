@@ -1,11 +1,39 @@
-import { Interaction } from 'detritus-client';
+import {
+    Interaction,
+    InteractionCommandClient,
+    Structures,
+} from 'detritus-client';
 import { InteractionEditOrRespond } from 'detritus-client/lib/structures';
 import { NovaClient } from '../../../core/Client';
 import { locales } from '../../../util/Constants';
 import { defaultLanguage } from '../../../util/Constants';
+import { SlashCommand } from './SlashCommand';
+import { Util } from '../../../util/util';
 
-export class CustomSlashContext extends Interaction.InteractionContext {
+export class CustomSlashContext<
+    Argument extends Interaction.ParsedArgs,
+> extends Interaction.InteractionContext {
     declare client: NovaClient;
+
+    util = new Util();
+
+    private $args: Argument;
+
+    constructor(
+        interactionCommandClient: InteractionCommandClient,
+        interaction: Structures.Interaction,
+        command: SlashCommand,
+        invoker:
+            | Interaction.InteractionCommand
+            | Interaction.InteractionCommandOption,
+        args: Argument,
+    ) {
+        super(interactionCommandClient, interaction, command, invoker);
+        this.$args = args;
+    }
+    get args() {
+        return this.$args;
+    }
 
     get locale(): ValueOf<typeof locales> {
         const l = super.locale || this.guildLocale || defaultLanguage;
@@ -21,12 +49,16 @@ export class CustomSlashContext extends Interaction.InteractionContext {
         );
     }
 
-    static fromContext(ctx: Interaction.InteractionContext) {
+    static fromContext(
+        ctx: Interaction.InteractionContext,
+        args: Interaction.ParsedArgs,
+    ) {
         return new CustomSlashContext(
             ctx.interactionCommandClient,
             ctx.interaction,
-            ctx.command,
+            ctx.command as SlashCommand,
             ctx.invoker,
+            args,
         );
     }
 }

@@ -1,4 +1,4 @@
-import { _DiceResult, ReturnDiceResult } from '@nova-bot/dnd-typings';
+import { _DiceResult, ReturnDiceResult } from '../typings';
 import { DnDgame } from './DnDGame';
 import { DnDError } from '../errors/CustomError';
 

@@ -1,4 +1,4 @@
-import { EventListenerOptions } from '@nova-bot/typings';
+import { EventListenerOptions } from '../typings';
 import { NovaClient } from '../core/Client';
 
 export abstract class EventListener implements EventListenerOptions {

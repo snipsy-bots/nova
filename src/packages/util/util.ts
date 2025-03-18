@@ -1,5 +1,5 @@
-import { CustomEnv } from '@nova-bot/typings';
 import fs from 'fs';
+import { CustomEnv } from '../typings';
 
 const env = {} as CustomEnv;
 
@@ -23,5 +23,8 @@ export function getEnv() {
     return env;
 }
 
-export const wait = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
+export class Util {
+    wait(ms: number) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+}

@@ -1,4 +1,4 @@
-import { LanguageKeyActivityParam } from '@nova-bot/i18n';
+import { LanguageKeyActivityParam } from './../packages/typings';
 import { Language } from '../packages/i18n/Language';
 
 const activities = [
@@ -30,6 +30,11 @@ export default class DefaultLanguage extends Language {
             initialPingMessage: ['asking the cosmos for a response...'],
             response: (ping: number) =>
                 ` The Cosmos returned my call in \`${ping}\`ms`,
+        },
+        help: {
+            invalidCommand: (str: string) =>
+                ` \`${str}\` is not a valid command `,
+            cmdDescription: () => '',
         },
     };
 }

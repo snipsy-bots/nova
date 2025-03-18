@@ -1,33 +1,17 @@
 import { Interaction } from 'detritus-client';
 import { CustomInteractionCommand } from './CustomCommand';
 import { CustomSlashContext } from './CustomContext';
+import { ParsedArgs } from 'detritus-client/lib/interaction';
 
 export abstract class SlashCommand extends CustomInteractionCommand {
-    abstract exec(ctx: CustomSlashContext): unknown;
+    abstract exec(ctx: CustomSlashContext<Record<string, unknown>>): unknown;
 
-    async run(ctx: Interaction.InteractionContext) {
+    async run(ctx: Interaction.InteractionContext, args: ParsedArgs) {
         try {
-            const context = CustomSlashContext.fromContext(ctx);
+            const context = CustomSlashContext.fromContext(ctx, args);
             await this.exec(context);
         } catch (error) {
             console.error(error);
         }
-    }
-
-    static applyOptions(options: Interaction.InteractionCommandOptions) {
-        return (
-            cls: new (
-                opts: Interaction.InteractionCommandOptions,
-            ) => SlashCommand,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        ): any => {
-            abstract class NewClass extends cls {
-                constructor(opts: Interaction.InteractionCommandOptions) {
-                    super({ ...opts, ...options });
-                }
-            }
-
-            return NewClass;
-        };
     }
 }
